@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ST IQ Incident Command</title>
+  <meta
+    name="description"
+    content="Dedicated Chat and Tasks experiences for the STMicroelectronics IQ incident demo."
+  >
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+  </style>
+  <script>
+    (() => {
+      const surface = window.location.pathname.endsWith("/tasks") ? "tasks" : "chat";
+      document.documentElement.setAttribute("data-surface", surface);
+    })();
+  </script>
+  <link rel="stylesheet" href="/v2/static/styles.css">
+  <script defer src="/v2/static/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="app-shell">
+    <aside class="global-nav" aria-label="Primary navigation">
+      <a class="brand-lockup" href="/v2/chat" aria-label="STMicroelectronics IQ home">
+        <span class="brand-mark">ST</span>
+        <span class="brand-copy">
+          <strong>IQ</strong>
+          <small>Command</small>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Presenter experiences">
+        <a id="tab-chat" class="nav-item" href="/v2/chat" data-tab="chat">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.8 4v-4.1A2.5 2.5 0 0 1 4 13.5v-8Z"/>
+          </svg>
+          <span>Chat</span>
+        </a>
+        <a id="tab-tasks" class="nav-item" href="/v2/tasks" data-tab="tasks">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm-4 3h2v10H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Zm5 1h8M9 12h8M9 16h5"/>
+          </svg>
+          <span>Tasks</span>
+        </a>
+      </nav>
+
+      <div class="nav-footer">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span>Live</span>
+      </div>
+    </aside>
+
+    <div class="app-content">
+      <header class="top-bar">
+        <div>
+          <strong>STMicroelectronics</strong>
+          <span>IQ Incident Command</span>
+        </div>
+        <span class="incident-chip">
+          <span class="live-dot" aria-hidden="true"></span>
+          INC-SIC-0813
+        </span>
+      </header>
+
+      <main id="main-content">
+        <section id="panel-chat" class="chat-page" aria-labelledby="chat-title">
+          <div class="chat-stage">
+            <div class="chat-scroll">
+              <section class="chat-hero">
+                <div class="commander-orb" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>
+                    <circle cx="12" cy="12" r="4"/>
+                  </svg>
+                </div>
+                <p class="eyebrow">Foundry hosted Commander</p>
+                <h1 id="chat-title">How can Commander help?</h1>
+                <p>
+                  Ask about the SiC incident. Commander routes the question to the right
+                  specialist and returns a concise, cited answer.
+                </p>
+                <div class="prompt-grid" aria-label="Suggested chat prompts">
+                  <button
+                    class="prompt-card"
+                    type="button"
+                    data-fill-target="chat-message"
+                    data-fill-value="What current public signals could affect SiC replacement supply?"
+                  >
+                    <span class="prompt-icon">01</span>
+                    <span>
+                      <strong>Check market signals</strong>
+                      <small>Current supply, logistics, and regulatory context</small>
+                    </span>
+                  </button>
+                  <button
+                    class="prompt-card"
+                    type="button"
+                    data-fill-target="chat-message"
+                    data-fill-value="For lot CAT-26-0813-A, identify the quality anomaly, affected customers, and available reallocation."
+                  >
+                    <span class="prompt-icon">02</span>
+                    <span>
+                      <strong>Assess customer exposure</strong>
+                      <small>Lot telemetry, orders, and available reallocation</small>
+                    </span>
+                  </button>
+                </div>
+              </section>
+
+              <section id="chat-result" class="chat-result" aria-live="polite"></section>
+            </div>
+
+            <div class="composer-dock">
+              <form id="chat-form" class="composer" novalidate>
+                <label class="sr-only" for="chat-message">Question for Commander</label>
+                <textarea
+                  id="chat-message"
+                  name="message"
+                  rows="2"
+                  maxlength="2000"
+                  placeholder="Message Commander"
+                  required
+                ></textarea>
+                <div class="composer-footer">
+                  <span>Market · Quality · Foundry IQ · Web Knowledge Source</span>
+                  <button id="chat-submit" class="send-button" type="submit" aria-label="Send message">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="m5 12 14-7-4.7 14-2.8-5.8L5 12Zm6.5 1.2L19 5"/>
+                    </svg>
+                    <span>Send</span>
+                  </button>
+                </div>
+              </form>
+              <div id="chat-status" class="inline-status" aria-live="polite"></div>
+              <details class="source-status">
+                <summary>Live data sources and fallback status</summary>
+                <p id="status-notice" class="notice-text">Loading adapter status...</p>
+                <section id="adapter-statuses" class="status-grid" aria-live="polite"></section>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section id="panel-tasks" class="tasks-page" aria-labelledby="tasks-title" hidden>
+          <div class="tasks-shell">
+            <aside class="task-sidebar">
+              <div class="task-sidebar-heading">
+                <p class="eyebrow">Long-running assessments</p>
+                <h1 id="tasks-title">Tasks</h1>
+                <p>Launch an assessment, then follow every agent and tool in real time.</p>
+              </div>
+
+              <form id="task-form" class="task-launcher" novalidate>
+                <div class="form-heading">
+                  <span class="plus-icon" aria-hidden="true">+</span>
+                  <strong>New task</strong>
+                </div>
+                <label class="sr-only" for="task-objective">Assessment objective</label>
+                <textarea
+                  id="task-objective"
+                  name="objective"
+                  rows="4"
+                  maxlength="3000"
+                  placeholder="Describe the assessment objective..."
+                ></textarea>
+                <div class="task-presets">
+                  <button
+                    class="preset-button"
+                    type="button"
+                    data-fill-target="task-objective"
+                    data-fill-value="Assess the current automotive SiC power-module incident for synthetic lot CAT-26-0813-A, identify live external signals and operational exposure, then produce a cited response brief."
+                  >
+                    Full incident response
+                  </button>
+                  <button
+                    class="preset-button"
+                    type="button"
+                    data-fill-target="task-objective"
+                    data-fill-value="Assess customer exposure and recommended containment actions for lot CAT-26-0813-A."
+                  >
+                    Containment only
+                  </button>
+                </div>
+                <button id="task-submit" class="primary-button full-width" type="submit">
+                  Start assessment
+                </button>
+              </form>
+
+              <section class="run-history">
+                <div class="history-heading">
+                  <strong>Recent tasks</strong>
+                  <button id="history-refresh" class="icon-button" type="button" aria-label="Refresh tasks">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20 6v5h-5M4 18v-5h5M18.5 11A7 7 0 0 0 6.3 7.2L4 11M5.5 13A7 7 0 0 0 17.7 16.8L20 13"/>
+                    </svg>
+                  </button>
+                </div>
+                <section id="task-history" class="history-shell" aria-live="polite"></section>
+              </section>
+            </aside>
+
+            <section class="task-workspace">
+              <header class="task-header">
+                <div>
+                  <p class="eyebrow">Agent execution</p>
+                  <h2>Incident assessment</h2>
+                  <p>Commander fan-out, specialist tools, and cited fan-in brief</p>
+                </div>
+                <div id="task-stream-status" class="stream-status" aria-live="polite"></div>
+              </header>
+              <section id="task-detail" class="task-detail" aria-live="polite"></section>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <p id="app-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+    </div>
+  </div>
+</body>
+</html>

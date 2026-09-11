@@ -1,0 +1,51 @@
+defaultEnvironment: dev
+environments:
+  dev:
+    projectEndpoint: https://stiqdemo-foundry.services.ai.azure.com/api/projects/st-iq-demo-v2
+    agentName: st-iq-commander-v2
+    azureContainerRegistry: stiqdemoacr.azurecr.io
+    observability:
+      applicationInsightsResourceId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-st-iq-demo/providers/Microsoft.Insights/components/stiqdemo-appinsights
+    evaluationSuites:
+      - id: market-smoke
+        tags:
+          tier: smoke
+          agent: market
+        dataset: st-iq-market-v2-smoke
+        datasetVersion: v1
+        datasetFile: .foundry/datasets/market-smoke-v1.jsonl
+        evaluators:
+          - name: relevance
+            threshold: 4
+          - name: groundedness
+            threshold: 4
+          - name: builtin.tool_call_accuracy
+            threshold: 0.8
+      - id: quality-smoke
+        tags:
+          tier: smoke
+          agent: quality
+        dataset: st-iq-quality-v2-smoke
+        datasetVersion: v1
+        datasetFile: .foundry/datasets/quality-smoke-v1.jsonl
+        evaluators:
+          - name: relevance
+            threshold: 4
+          - name: groundedness
+            threshold: 4
+          - name: builtin.tool_call_accuracy
+            threshold: 0.8
+      - id: commander-e2e
+        tags:
+          tier: regression
+          agent: commander
+        dataset: st-iq-commander-v2-e2e
+        datasetVersion: v1
+        datasetFile: .foundry/datasets/commander-e2e-v1.jsonl
+        evaluators:
+          - name: task_adherence
+            threshold: 4
+          - name: intent_resolution
+            threshold: 4
+          - name: builtin.tool_call_accuracy
+            threshold: 0.8

@@ -1,0 +1,21 @@
+{
+  "status": "not-run",
+  "generated_at": null,
+  "dataset": {
+    "name": "st-iq-incident-agent-eval-seed-v1",
+    "total_cases": 15,
+    "executed_cases": 0
+  },
+  "candidates": [],
+  "optimizer": {
+    "state": "blocked",
+    "label": "Foundry Agent Optimizer",
+    "reason": "No environment-specific evaluation has been run in this public source tree.",
+    "action": "Run scripts/evaluate.ps1 after deployment to generate local evidence."
+  },
+  "portal": {
+    "project": "st-iq-demo",
+    "agent": "st-iq-incident-agent",
+    "application_insights": null
+  }
+}

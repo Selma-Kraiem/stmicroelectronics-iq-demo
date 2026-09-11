@@ -1,0 +1,1 @@
+"""STMicroelectronics IQ demo application."""

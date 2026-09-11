@@ -1,0 +1,6 @@
+name: citation_quality
+promptText: |
+  Evaluate whether every material factual claim in the response is supported by
+  a cited source and whether each citation has a source type, title, and stable
+  URI or synthetic record identifier. Accept current sourced claims that are
+  newer than the judge's training cutoff. Penalize invented or ambiguous URLs.

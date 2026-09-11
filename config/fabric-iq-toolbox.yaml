@@ -1,0 +1,6 @@
+description: Delegated Fabric IQ ontology context
+connections:
+  - name: st-fabric-iq-ontology
+policies:
+  rai_config:
+    rai_policy_name: Microsoft.Default

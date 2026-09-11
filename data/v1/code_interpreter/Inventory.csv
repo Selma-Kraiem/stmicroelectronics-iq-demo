@@ -1,0 +1,6 @@
+LotID,Location,QtyOnHand,Status,LastUpdated
+SiC-AUTO-2451,Warehouse-Muar (MY),8500,Available (blockable),2026-08-29
+SiC-AUTO-2451,Hub-Frankfurt (DE),3200,In transit,2026-08-29
+SiC-AUTO-2451,Fab-Catania FGWH (IT),1500,On hold - QA,2026-08-29
+SiC-AUTO-2452,Warehouse-Muar (MY),6000,Available (blockable),2026-08-29
+SiC-AUTO-2450,Hub-Frankfurt (DE),800,In transit,2026-08-29

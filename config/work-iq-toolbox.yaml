@@ -1,0 +1,6 @@
+description: Read-only delegated Microsoft 365 context through Work IQ
+connections:
+  - name: st-iq-workiq-mcp
+policies:
+  rai_config:
+    rai_policy_name: Microsoft.Default

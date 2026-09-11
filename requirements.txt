@@ -1,0 +1,8 @@
+azure-ai-projects>=2.3,<3.0
+azure-identity>=1.17,<2.0
+agent-framework-core>=1.13,<2.0
+agent-framework-foundry>=1.10,<2.0
+agent-framework-foundry-hosting>=1.0.0b260730,<2.0
+pandas>=2.2,<3.0
+openpyxl>=3.1,<4.0
+python-dotenv>=1.0,<2.0

@@ -1,0 +1,17 @@
+name: st-iq-incident-agent
+description: Chief/Compiler orchestration with parallel Radar and Tool Search-enabled Fab Intelligence.
+template:
+  kind: hosted
+  protocols:
+    - protocol: responses
+      version: 2.0.0
+  environment_variables:
+    - name: FOUNDRY_PROJECT_ENDPOINT
+    - name: AZURE_AI_MODEL_DEPLOYMENT_NAME
+    - name: MARKET_TOOLBOX_ENDPOINT
+    - name: INTERNAL_TOOLBOX_ENDPOINT
+    - name: MARKET_SOURCE_LABEL
+    - name: STIQ_V1_DATA_ROOT
+      optional: true
+    - name: ENABLE_INSTRUMENTATION
+    - name: OPTIMIZATION_LOCAL_DIR

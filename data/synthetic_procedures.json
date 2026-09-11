@@ -1,0 +1,20 @@
+[
+  {
+    "id": "syn-proc-qms-017",
+    "title": "Synthetic QMS-017 SiC gate-oxide excursion containment",
+    "effective_date": "2026-08-01",
+    "content": "SYNTHETIC DEMO DATA. If dynamic gate-oxide leakage exceeds the control limit on two consecutive wafers, quarantine all lots sharing epitaxy batch, implant recipe, oxidation furnace window, and final-test handler. Open an 8D within two hours, notify automotive quality and account teams within four hours, and prohibit customer shipment until reliability engineering signs the containment record."
+  },
+  {
+    "id": "syn-proc-scm-042",
+    "title": "Synthetic SCM-042 automotive allocation and alternate-source protocol",
+    "effective_date": "2026-07-15",
+    "content": "SYNTHETIC DEMO DATA. Preserve safety-stock commitments for launch-phase automotive programs. Reallocate unaffected finished goods only after lot genealogy and electrical-screen equivalence are confirmed. Record every customer allocation decision with order, product, lot, plant, and approver identifiers."
+  },
+  {
+    "id": "syn-proc-comms-009",
+    "title": "Synthetic COMMS-009 customer incident communications",
+    "effective_date": "2026-06-20",
+    "content": "SYNTHETIC DEMO DATA. Initial external communication must distinguish confirmed facts, working hypotheses, and next verification time. Never disclose another customer, internal yield, or unapproved root-cause theory. Teams updates are drafts until an incident commander explicitly approves sending."
+  }
+]

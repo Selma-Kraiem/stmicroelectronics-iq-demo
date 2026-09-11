@@ -1,0 +1,26 @@
+[
+  {
+    "title": "STMicroelectronics Annual Report",
+    "url": "https://investors.st.com/financial-information/annual-and-semi-annual-reports",
+    "index_note": "Official STMicroelectronics investor-relations landing page for annual and semi-annual reports. Use the linked current report for company, market, risk, and manufacturing context; this repository stores only attribution metadata.",
+    "retrieved_at": "2026-08-13"
+  },
+  {
+    "title": "STPOWER silicon-carbide products",
+    "url": "https://www.st.com/en/power-transistors/silicon-carbide-sic-devices.html",
+    "index_note": "Official ST product-family landing page for silicon-carbide power devices. Use it for public product positioning and technical-family context; this repository does not redistribute product-document text.",
+    "retrieved_at": "2026-08-13"
+  },
+  {
+    "title": "STMicroelectronics automotive solutions",
+    "url": "https://www.st.com/content/st_com/en/automotive.html",
+    "index_note": "Official ST automotive-solutions landing page. Use it for public application context and follow its links to current product documentation.",
+    "retrieved_at": "2026-08-13"
+  },
+  {
+    "title": "STM32 product documentation",
+    "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html",
+    "index_note": "Official STM32 product-family landing page. Use it to locate current public data sheets, reference manuals, and application notes.",
+    "retrieved_at": "2026-08-13"
+  }
+]

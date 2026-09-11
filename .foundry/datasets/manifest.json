@@ -1,0 +1,23 @@
+{
+  "datasets": [
+    {
+      "agent": "st-iq-incident-agent",
+      "stage": "seed",
+      "version": "v1",
+      "name": "st-iq-incident-agent-eval-seed",
+      "file": ".foundry/datasets/st-iq-incident-agent-eval-seed-v1.jsonl",
+      "datasetUri": "pending-registration",
+      "registrationStatus": "blocked-by-storage-network-policy",
+      "rowCount": 15,
+      "categories": [
+        "happy_path",
+        "tool_web",
+        "tool_foundry_iq",
+        "edge_case",
+        "out_of_scope",
+        "safety_boundary",
+        "multi_step"
+      ]
+    }
+  ]
+}

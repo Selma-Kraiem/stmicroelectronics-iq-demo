@@ -1,0 +1,52 @@
+[project]
+name = "stmicroelectronics-iq-demo"
+version = "0.1.0"
+description = "Local, deterministic STMicroelectronics Microsoft IQ incident demo"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "httpx>=0.27,<1.0",
+    "pydantic>=2.7,<3.0",
+    "uvicorn>=0.30,<1.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*", "v2*"]
+
+[project.optional-dependencies]
+cloud = [
+    "azure-identity==1.26.0b2",
+]
+hosted = [
+    "agent-framework-a2a==1.0.0b260730",
+    "agent-framework-foundry>=1.0.0,<2.0",
+    "agent-framework-foundry-hosting>=1.0.0b260730,<1.1",
+    "agent-framework-orchestrations>=1.1,<2.0",
+    "azure-ai-agentserver-optimization>=1.0.0b1,<2",
+    "azure-ai-agentserver-responses>=1.0.0b8,<2",
+    "azure-identity>=1.17,<2.0",
+    "python-dotenv>=1.0,<2.0",
+]
+dev = [
+    "pytest>=8.0,<9.0",
+    "pytest-asyncio>=0.23,<1.0",
+    "ruff>=0.9,<1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.uv]
+prerelease = "allow"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

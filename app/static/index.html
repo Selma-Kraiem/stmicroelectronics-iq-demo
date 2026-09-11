@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+  </style>
+  <title>ST IQ Operations Assistant</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/tasks" data-route="tasks">
+      <span class="brand-mark" aria-hidden="true">ST</span>
+      <span><strong>STMicroelectronics</strong><small>IQ Operations Assistant</small></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="/chat" data-route="chat">Chat</a>
+      <a href="/tasks" data-route="tasks">Tasks</a>
+      <a href="/history" data-route="history">History</a>
+      <a href="/evaluation" data-route="evaluation">Evaluation</a>
+    </nav>
+    <div class="presenter"><span id="mode" class="pill">Loading</span><span class="avatar">SK</span></div>
+  </header>
+
+  <div class="app-shell">
+    <aside>
+      <span class="agent-badge">Foundry Agent Framework</span>
+      <h2>ST SiC Incident Command</h2>
+      <p>Two specialists run in parallel, then the Chief/Compiler fuses their grounded evidence.</p>
+      <div class="agent-stack parallel-agents" aria-label="Parallel agent workflow">
+        <div>
+          <span><i>R</i><span>Radar<small>Tool Search</small></span></span>
+          <span><i>F</i><span>Fab Intelligence<small>Fabric · Foundry · Work IQ</small></span></span>
+        </div>
+        <b aria-hidden="true">↓</b>
+        <span><i>C</i><span>Chief/Compiler<small>Routing and evidence synthesis</small></span></span>
+      </div>
+      <div id="adapter-summary" class="adapter-summary" aria-live="polite"></div>
+      <div class="sidebar-heading"><strong>Recent incidents</strong><span id="history-count">0</span></div>
+      <div id="recent-runs" class="recent-runs"></div>
+    </aside>
+
+    <main>
+      <section id="chat-view" class="view" hidden>
+        <div class="view-heading">
+          <div><span class="eyebrow">Ask the connected agent workflow</span><h1>Chat</h1></div>
+          <span class="live-indicator"><i></i> Ready for SiC operations</span>
+        </div>
+        <div id="conversation" class="conversation" aria-live="polite">
+          <article class="assistant-message">
+            <span class="avatar">IQ</span>
+            <div>
+              <strong>ST SiC Incident Command</strong>
+              <p>Ask about the SiC-AUTO-2451 Vth excursion. The Chief/Compiler activates Radar, Fab Intelligence, or both, then produces a cited incident response.</p>
+            </div>
+          </article>
+        </div>
+        <div class="suggestions" aria-label="Suggested questions">
+          <button type="button" data-prompt="What current public regulatory, weather, market, or supply developments could affect European automotive silicon-carbide module deliveries?">Current external context</button>
+          <button type="button" data-prompt="What containment procedure applies to the fictional SiC-AUTO-2451 Vth excursion? Cite the source and label synthetic content.">Containment procedure</button>
+        </div>
+        <form id="chat-form" class="composer">
+          <label class="sr-only" for="chat-input">Ask the agent</label>
+          <textarea id="chat-input" rows="2" maxlength="2000" placeholder="Ask ST IQ Operations Assistant..." required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <section id="tasks-view" class="view" hidden>
+        <div class="outcome">
+          <span class="task-orb" aria-hidden="true">ST</span>
+          <span class="eyebrow">Long-running agent</span>
+          <h1>Drive an operational outcome</h1>
+          <p>Coordinate external context, operational exposure, procedures, and accountable action while the task runs in the background.</p>
+          <label class="sr-only" for="objective">Operational outcome</label>
+          <textarea id="objective" rows="5">Assess the SiC-AUTO-2451 Vth parametric excursion on SCTW90N65G2V, quantify field exposure and blockable inventory, identify the probable root cause, retrieve the applicable containment procedure and current public risk context, then produce a cited customer-impact brief.</textarea>
+          <div class="task-actions">
+            <label><input id="include-work-iq" type="checkbox" disabled> Include delegated Work IQ context</label>
+            <span>Safe default: Teams dry-run only</span>
+            <button id="start" type="button">Go</button>
+          </div>
+        </div>
+
+        <section id="assessment" class="task-panel" hidden aria-live="polite">
+          <div class="progress-header"><h2>Task execution</h2><strong id="progress-label">Queued</strong></div>
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="bar"></span></div>
+          <ol id="events" class="timeline"></ol>
+        </section>
+
+        <section id="result" class="task-panel" hidden>
+          <div class="result-head"><div><span class="eyebrow">Operational outcome</span><h2 id="incident-title"></h2></div><span class="pill demo">Synthetic operations</span></div>
+          <p id="data-notice" class="live-indicator"></p>
+          <div class="evidence-counter"><strong id="evidence-count">0/0</strong><span>evidence steps completed</span></div>
+          <div class="result-grid">
+            <article><h3>Field impact</h3><div id="impact"></div></article>
+            <article><h3>Root cause &amp; actions</h3><div id="actions"></div></article>
+            <article><h3>Evidence and sources</h3><div id="citations"></div></article>
+          </div>
+          <details class="raw-agents"><summary>Inspect raw agent JSON</summary><div><article><h3>Radar</h3><pre id="radar-json"></pre></article><article><h3>Fab Intelligence</h3><pre id="fab-json"></pre></article></div></details>
+          <article class="teams"><h3>Teams-ready incident brief <span id="teams-badge" class="badge">Dry run</span></h3><p id="teams-target" class="delivery-target"></p><p id="teams-text">Teams-ready incident brief</p><button id="dry-run" type="button">Validate dry run</button><p id="delivery" role="status"></p></article>
+        </section>
+      </section>
+
+      <section id="history-view" class="view" hidden>
+        <div class="view-heading"><div><span class="eyebrow">Evidence retained in this demo instance</span><h1>Task history</h1></div></div>
+        <div id="history-list" class="history-list"></div>
+      </section>
+
+      <section id="evaluation-view" class="view" hidden>
+        <div class="view-heading">
+          <div><span class="eyebrow">Evidence-driven agent engineering</span><h1>Evaluation &amp; optimization</h1></div>
+          <a class="portal-link" href="https://ai.azure.com" target="_blank" rel="noreferrer">Open Microsoft Foundry ↗</a>
+        </div>
+        <div id="evaluation-loading" class="empty">Loading verified evaluation evidence…</div>
+        <div id="evaluation-content" hidden>
+          <section class="score-hero">
+            <div><span class="eyebrow">Verified contract pass rate</span><strong id="evaluation-score">—</strong><small id="evaluation-dataset"></small></div>
+            <div class="score-meter" aria-hidden="true"><span id="evaluation-meter"></span></div>
+          </section>
+          <section class="task-panel">
+            <div class="progress-header"><h2>Agent candidates</h2><span class="badge">Measured, never simulated</span></div>
+            <div id="candidate-list" class="candidate-list"></div>
+          </section>
+          <section id="optimizer-card" class="optimizer-card">
+            <div><span id="optimizer-state" class="status"></span><h2 id="optimizer-label"></h2></div>
+            <p id="optimizer-reason"></p>
+            <strong>Required action</strong>
+            <p id="optimizer-action"></p>
+          </section>
+          <section class="monitoring-grid">
+            <article><span>Tracing</span><strong>OpenTelemetry</strong><small>Agent, model, and tool spans in Application Insights</small></article>
+            <article><span>Monitoring</span><strong>Foundry dashboard</strong><small>Latency, errors, token usage, and execution traces</small></article>
+            <article><span>Safety</span><strong>Human approval</strong><small>Teams output remains dry-run by default</small></article>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

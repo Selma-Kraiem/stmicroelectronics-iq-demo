@@ -1,0 +1,13 @@
+name: st-iq-market-v2
+description: Public Market specialist using Web Knowledge Source (Web IQ fallback).
+template:
+  kind: hosted
+  protocols:
+    - protocol: responses
+      version: 2.0.0
+  environment_variables:
+    - name: STIQ_V2_AGENT_ROLE
+    - name: FOUNDRY_PROJECT_ENDPOINT
+    - name: AZURE_AI_MODEL_DEPLOYMENT_NAME
+    - name: WEB_KNOWLEDGE_MCP_ENDPOINT
+    - name: ENABLE_INSTRUMENTATION

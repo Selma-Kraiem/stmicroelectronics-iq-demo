@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+name: stmicroelectronics-iq-demo
+requiredVersions:
+  extensions:
+    microsoft.foundry: '>=1.0.0-beta.2'
+services:
+  ai-project:
+    host: azure.ai.project
+    deployments:
+      - name: gpt-5.4-mini
+        model:
+          format: OpenAI
+          name: gpt-5.4-mini
+          version: '2026-03-17'
+        sku:
+          name: GlobalStandard
+          capacity: 10
+      - name: text-embedding-3-small
+        model:
+          format: OpenAI
+          name: text-embedding-3-small
+          version: '1'
+        sku:
+          name: GlobalStandard
+          capacity: 10
+  st-iq-incident-agent:
+    host: azure.ai.agent
+    project: agents/hosted
+    language: python
+    codeConfiguration:
+      runtime: python_3_13
+      entryPoint: main.py
+    uses:
+      - ai-project
+    kind: hosted
+    name: st-iq-incident-agent
+    displayName: ST SiC Incident Command
+    description: Three-agent workflow for a cited automotive SiC incident assessment.
+    protocols:
+      - protocol: responses
+        version: 2.0.0
+    environmentVariables:
+      - name: FOUNDRY_PROJECT_ENDPOINT
+        value: ${FOUNDRY_PROJECT_ENDPOINT}
+      - name: AZURE_AI_MODEL_DEPLOYMENT_NAME
+        value: ${AZURE_AI_MODEL_DEPLOYMENT_NAME}
+      - name: MARKET_TOOLBOX_ENDPOINT
+        value: ${MARKET_TOOLBOX_ENDPOINT}
+      - name: INTERNAL_TOOLBOX_ENDPOINT
+        value: ${INTERNAL_TOOLBOX_ENDPOINT}
+      - name: ENABLE_INSTRUMENTATION
+        value: "true"
+      - name: OPTIMIZATION_LOCAL_DIR
+        value: .agent_configs
+    container:
+      resources:
+        cpu: '0.5'
+        memory: 1Gi
+infra:
+  provider: bicep
+  path: infra

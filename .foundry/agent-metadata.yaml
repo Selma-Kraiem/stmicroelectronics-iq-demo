@@ -1,0 +1,30 @@
+defaultEnvironment: dev
+environments:
+  dev:
+    projectEndpoint: https://stiqdemo-foundry.services.ai.azure.com/api/projects/st-iq-demo
+    agentName: st-iq-incident-agent
+    azureContainerRegistry: stiqdemoacr.azurecr.io
+    observability:
+      applicationInsightsResourceId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-st-iq-demo/providers/Microsoft.Insights/components/stiqdemo-appinsights
+    evaluationSuites:
+      - id: smoke-core
+        tags:
+          tier: smoke
+          purpose: tools-and-citations
+          stage: seed
+        dataset: st-iq-incident-agent-eval-seed
+        datasetVersion: v1
+        datasetFile: .foundry/datasets/st-iq-incident-agent-eval-seed-v1.jsonl
+        datasetUri: pending-registration
+        datasetRegistrationStatus: blocked-by-storage-network-policy
+        evaluators:
+          - name: relevance
+            threshold: 4
+          - name: task_adherence
+            threshold: 4
+          - name: intent_resolution
+            threshold: 4
+          - name: indirect_attack
+            threshold: 1
+          - name: builtin.tool_call_accuracy
+            threshold: 0.8

@@ -1,0 +1,1 @@
+{"query":"For synthetic lot CAT-26-0813-A, retrieve final-test anomalies, affected fictional orders, inventory coverage, and the containment procedure.","expected_response":"Uses Foundry IQ plus both operational APIs, labels every operational record synthetic, and includes citations."}

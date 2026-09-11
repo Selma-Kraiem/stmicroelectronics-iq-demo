@@ -1,0 +1,7 @@
+description: ST IQ operational research toolbox
+connections:
+  - name: st-iq-kb-mcp
+  - name: st-iq-webiq-mcp
+policies:
+  rai_config:
+    rai_policy_name: Microsoft.Default

@@ -1,0 +1,1 @@
+{"query":"MODE=TASK run_id=eval-v2-001 incident_id=INC-SIC-0813 correlation_id=eval-v2-001. Assess public signals and synthetic customer exposure, then produce a cited response brief.","expected_response":"Calls Market and Quality over A2A concurrently, preserves identifiers, separates facts from hypotheses and missing information, and blocks Teams sending."}

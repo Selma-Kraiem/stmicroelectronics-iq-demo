@@ -1,0 +1,15 @@
+name: st-iq-commander-optimization
+agent:
+  name: st-iq-incident-agent
+  kind: hosted
+  version: "7"
+  model: gpt-5.4-mini
+  config: .agent_configs/baseline/metadata.yaml
+dataset:
+  local_uri: ../../.foundry/datasets/st-iq-incident-agent-eval-seed-v1.jsonl
+evaluators:
+  - builtin.task_adherence
+options:
+  eval_model: gpt-5.4-mini
+  optimization_model: gpt-5.4-mini
+  max_candidates: 1

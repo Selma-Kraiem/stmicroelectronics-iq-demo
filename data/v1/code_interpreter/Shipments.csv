@@ -1,0 +1,9 @@
+ShipmentID,LotID,ProductRef,CustomerName,CustomerTier,QtyShipped,ShipDate,Destination,ApplicationEndUse,FieldStatus
+SHP-10432,SiC-AUTO-2451,SCTW90N65G2V,AutoTier1-Alpha,Tier-1,12000,2026-07-14,"Stuttgart, DE",EV traction inverter,In field
+SHP-10441,SiC-AUTO-2451,SCTW90N65G2V,AutoTier1-Beta,Tier-1,6500,2026-07-18,"Torino, IT",EV traction inverter,In field
+SHP-10455,SiC-AUTO-2451,SCTW90N65G2V,EVMaker-Gamma,OEM,4000,2026-07-22,"Lyon, FR",Onboard charger (OBC),In field
+SHP-10460,SiC-AUTO-2451,SCTW90N65G2V,Distributor-Delta,Distributor,3000,2026-07-25,"Munich, DE",Mixed / resale,In warehouse
+SHP-10402,SiC-AUTO-2450,SCTW90N65G2V,AutoTier1-Alpha,Tier-1,9000,2026-07-05,"Stuttgart, DE",EV traction inverter,In field
+SHP-10478,SiC-AUTO-2452,SCTW90N65G2V,AutoTier1-Beta,Tier-1,7000,2026-07-28,"Torino, IT",EV traction inverter,In production
+SHP-10310,SiC-AUTO-2440,STPSC20H12,IndustrialCo-Sigma,OEM,15000,2026-06-20,"Shenzhen, CN",Solar inverter,In field
+SHP-10501,SiC-AUTO-2455,SCTW90N65G2V,EVMaker-Gamma,OEM,5200,2026-08-02,"Lyon, FR",OBC,In production
